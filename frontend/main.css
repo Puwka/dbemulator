@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+form {
+    margin:20px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.link {
+
+    flex:1 1 100%;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.link-txt{
+    margin-top: 5px;
+}
+
+button{
+    color: rgba(192, 57, 43,1.0);
+    border-radius: 10px;
+    border: 2px solid;
+    width: 150px;
+    background: #fff;
+    padding: 0;
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "Helvetica", sans-serif;
+    transition: .3s;
+}
+
+button:hover{
+    background-color: rgba(192, 57, 43, 1);
+    color: white;
+    border:rgba(192, 57, 43, 1) 2px solid;
+
+}
