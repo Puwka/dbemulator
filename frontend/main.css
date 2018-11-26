@@ -160,7 +160,7 @@ input[type="submit"]:hover{
 
 
 input::placeholder, textarea::placeholder{    /* placeholder opacity */
-    color: rgb(0,0,0,0.3);
+    color: rgba(0,0,0,0.3);
 }
 
 input::-webkit-outer-spin-button,
@@ -173,30 +173,40 @@ section#hire form div span.valid {
 }
 
 /* VALIDATOR */
-body section form div.field  input.empty,
+/* body section form div.field  input.empty,
 body section form div.field  textarea.empty{
-    background-color: rgb(241, 196, 15);
-}
-.fa-exclamation{
-    position:absolute;
-    color:#f1c40f;
-    font-size: 40px;
-    z-index:1;
-    left: calc(102% + 5px);
-    top:12%;
-    display: none;
-}
+    background-color: salmon;
+} */
 
-.left-warn{
-    left:calc(-4% - 8px);
-    display: none;
-}
 
 form .field input[type="text"].empty+ label,
 form .field input[type="number"].empty + label,
 form .field textarea.empty + label {
   width: 18%;
-  background: rgb(192, 57, 43);
-  color: #000;
-  font-weight: bold;
+  background: salmon;
+
+  /* color: #000;
+  font-weight: bold; */
+}
+
+form .field input[type="text"].empty,
+form .field input[type="number"].empty,
+form .field textarea.empty,
+form .field input[type="text"].empty+ label,
+form .field input[type="number"].empty + label,
+form .field textarea.empty + label {
+    animation: shake .3s .5s;
+    animation-iteration-count: 2;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0)
+    } 33% {
+        transform: translateX(-10px);
+    } 66% {
+        transform: translateX(10px);
+    } 100% {
+        transform: translateX(0);
+    }
 }
