@@ -201,7 +201,7 @@ form .field textarea.empty + label {
 
 @keyframes shake {
     0% {
-        transform: translateX(0)
+        transform: translateX(0);
     } 33% {
         transform: translateX(-10px);
     } 66% {
