@@ -18,8 +18,12 @@ form.addEventListener('submit', () => {
     event.preventDefault()
 
     const data = [].reduce.call(inputs, (acc, input) => {
-        acc[input.id] = input.value
-        return acc
+        acc[input.id] = input.value;
+        return acc;
     }, {});
+    // 
+    // data.forEach((item, i) => {
+    //     ifdata[i]
+    // })
 
 })
