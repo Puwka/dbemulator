@@ -37,7 +37,7 @@ form.addEventListener('submit', () => {
         return
     }
 
-    axios.post('localhost:3005/summer', data)
+    axios.post('http://localhost:3005/summer/addTour', data)
         .then(res => {
             console.log(res)
         })

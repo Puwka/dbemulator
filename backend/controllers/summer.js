@@ -23,6 +23,6 @@ exports.postAddTour = () => async ctx => {
 };
 
 exports.getIndex = () => async ctx => {
-    const p = path.resolve('frontend')
+    const p = path.resolve('frontend');
     await send(ctx, 'index.html', {root: p})
 };
