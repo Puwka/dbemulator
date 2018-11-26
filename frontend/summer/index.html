@@ -5,22 +5,88 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="../main.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 
 <body>
-    <form>
-        <label class="link" for="link">
-            <p>Ссылка:</p>
-            <input class="link-txt" id="link" type="text" placeholder="--> link <--">
-        </label>
-        <button type="submit" name="button">Submit</button>
-    </form>
+    <section id="hire">
+        <h1>ODMEN PANEL</h1>
+
+        <form>
+            <div class="field id-box">
+                <input class="selectMe" type="text" id="id" placeholder="uksa" autocomplete="off" />
+                <label for="id">ССЫЛКА</label>
+                <span class="ss-icon">check</span>
+            </div>
+
+            <div class="field title-box">
+                <input class="selectMe" type="text" id="title" placeholder="Укса" autocomplete="off" />
+                <label for="title">Название</label>
+                <span class="ss-icon">check</span>
+            </div>
+
+            <div class="field advancedTitle-box">
+                <input class="selectMe" type="text" id="advancedTitle" autocomplete="off" placeholder="Экстремальная Укса, сплав на катамаранах" />
+                <label for="advancedTitle">Полное Название</label>
+                <span class="ss-icon">check</span>
+            </div>
+
+            <div class="field previewText-box">
+                <textarea class="selectMe msg" id="previewText" autocomplete="off" rows="4" placeholder="Приглашаем вас провести незабываемые..." /></textarea>
+                <label for="previewText">Описание</label>
+                <span class="ss-icon">check</span>
+            </div>
+
+            <div class="field lengthExtended-box">
+                <textarea class="selectMe msg" id="lengthExtended" autocomplete="off" rows="4" placeholder="Продолжительность: 4 дня / 3 ночи" /></textarea>
+                <label for="lengthExtended">Длительность тура</label>
+                <span class="ss-icon">check</span>
+            </div>
+
+            <div class="field active-box">
+                <textarea class="selectMe msg" id="active" rows="4" autocomplete="off" placeholder="Активная часть: 34 км..." /></textarea>
+                <label for="active">Активная часть</label>
+                <span class="ss-icon">check</span>
+            </div>
+
+            <div class="field facilities-box">
+                <textarea class="selectMe msg" id="facilities" rows="4" autocomplete="off" placeholder="Средства сплава: 4-ех..." /></textarea>
+                <label for="facilities">Средства сплава</label>
+                <span class="ss-icon">check</span>
+            </div>
+
+            <div class="field difficulty-box">
+                <input class="selectMe" type="text" id="difficulty" autocomplete="off" placeholder="Сложность: средний уровень" />
+                <label for="difficulty">Сложность</label>
+                <span class="ss-icon">check</span>
+            </div>
+
+            <div class="field price-box">
+                <input class="selectMe" type="number" id="price" autocomplete="off" placeholder="9000" autocomplete="off" />
+                <label for="price">Цена</label>
+                <span class="ss-icon">check</span>
+            </div>
+
+            <div class="field fullReview-box">
+                <textarea class="selectMe msg" id="fullReview" autocomplete="off" rows="4" placeholder="Река Уксунйоки (Укса) — настоящий бестселлер..." /></textarea>
+                <label for="fullReview">Полное описание</label>
+                <span class="ss-icon">check</span>
+            </div>
+
+            <div class="field tourLength-box">
+                <input class="selectMe" type="number" id="tourLength" autocomplete="off" placeholder="4" autocomplete="off" />
+                <label for="tourLength">Длина тура в днях</label>
+                <span class="ss-icon">check</span>
+            </div>
 
 
+            <input class="button" type="submit" value="Send" />
+        </form>
+    </section>
 
+    <script src="index.js" type="text/javascript"></script>
 
 </body>
-<script src="index.js" type="text/javascript"></script>
 
 </html>

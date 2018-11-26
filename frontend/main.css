@@ -1,40 +1,144 @@
-* {
-    margin: 0;
-    box-sizing: border-box;
-    padding: 0;
+body {
+  background: rgb(0,150,246);                  /* CVET NASTOYENIYA*/
+  font-size: 62.5%;
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  color: #B6B6B6;
+  letter-spacing: 10px;
 }
-
-body{
-    display: flex;
-    justify-content: center;
-    align-content: center;
+body section {
+  background: rgb(0,150,246);
+  margin: 60px auto 120px;
+  border-top: 15px solid rgb(0,118,212);
+  text-align: center;
+  padding: 50px 0 110px;
+  width: 80%;
+  max-width: 1100px;
+}
+body section h1 {
+  color:#fff;
+  margin-bottom: 40px;
+  font-size: 4em;
+  text-transform: uppercase;
+  font-family: 'Lato', sans-serif;
+  font-weight: 100;
 }
 
 form {
-    margin:20px;
-    display: flex;
-    flex-wrap: wrap;
+  width: 58.3333333333%;
+  margin: 0 auto;
 }
-
-.link {
-
-    flex:1 1 100%;
-    margin-bottom: 10px;
-    display: flex;
-    flex-wrap: wrap;
-
+form .field {
+  width: 100%;
+  position: relative;
+  margin-bottom: 15px;
 }
-
-.link-txt{
-    margin-top: 5px;
+form .field label {
+  text-transform: uppercase;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgb(0,117,211);
+  width: 100%;
+  padding: 18px 0;
+  font-size: 1.45em;
+  letter-spacing: 0.075em;
+  -webkit-transition: all 333ms ease-in-out;
+  -moz-transition: all 333ms ease-in-out;
+  -o-transition: all 333ms ease-in-out;
+  -ms-transition: all 333ms ease-in-out;
+  transition: all 333ms ease-in-out;
+  max-height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgb(255,255,255,0.8);
 }
-
-button{
-    color: rgba(192, 57, 43,1.0);
-    border-radius: 10px;
-    border: 2px solid;
+form .field label + span {
+  font-family: 'Lato' sans-serif;     /*    DOBAVIT         */
+  opacity: 0;
+  color: #fff;
+  display: block;
+  position: absolute;
+  top: 12px;
+  left: 7%;
+  font-size: 2.5em;
+  text-shadow: 1px 2px 0 #cd6302;
+  -webkit-transition: all 333ms ease-in-out;
+  -moz-transition: all 333ms ease-in-out;
+  -o-transition: all 333ms ease-in-out;
+  -ms-transition: all 333ms ease-in-out;
+  transition: all 333ms ease-in-out;
+}
+form .field input[type="text"],
+form .field input[type="number"],
+form .field textarea  {
+  border: none;
+  background: #FFF;
+  width: 80.5%;
+  margin: 0;
+  padding: 18px 0;
+  padding-left: 19.5%;
+  color: #313A3D;
+  font-size: 1.4em;
+  letter-spacing: 0.05em;
+}
+form .field input[type="text"].msg,
+form .field input[type="number"].msg,
+form .field textarea.msg {
+  height: 17px;
+  resize: none;
+  -webkit-transition: all 333ms ease-in-out;
+  -moz-transition: all 333ms ease-in-out;
+  -o-transition: all 333ms ease-in-out;
+  -ms-transition: all 333ms ease-in-out;
+  transition: all 333ms ease-in-out;
+}
+form .field input[type="text"]:focus,
+form .field input[type="number"]:focus,
+form .field input[type="number"].focused,
+ form .field input[type="text"].focused,
+form .field textarea:focus,
+form .field textarea.focused {
+  outline: none;
+}
+form .field input[type="text"]:focus.msg,
+form .field input[type="number"]:focus.msg,
+ form .field input[type="text"].focused.msg,
+form .field input[type="number"].focused.msg,
+form .field textarea:focus.msg,
+form .field textarea.focused.msg {
+  padding-bottom: 150px;
+}
+form .field input[type="text"]:focus + label, form .field input[type="text"].focused + label,
+form .field input[type="number"]:focus + label, form .field input[type="number"].focused + label,
+form .field textarea:focus + label,
+form .field textarea.focused + label {
+  width: 18%;
+  background: #ff892b;                    /*  CVET SVERNUVSHIYSYA */
+  color: #fff;
+}
+form .field input[type="text"].focused + label,
+form .field input[type="number"].focused + label,
+form .field textarea.focused + label {
+  color: #fff;
+}
+form .field:hover label {
+  width: 18%;
+  background: rgb(0,117,211);
+  color: white;
+  max-height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+input[type="submit"]{
+    margin-top: 10px;
+    color: white;
+    border: none;
+    box-shadow: 0 0 16px 1px rgb(0,0,0, 0.5);
     width: 150px;
-    background: #fff;
+    background-color: #ff892b;
     padding: 0;
     height: 40px;
     text-align: center;
@@ -42,11 +146,28 @@ button{
     font-weight: bold;
     font-family: "Helvetica", sans-serif;
     transition: .3s;
+    cursor: pointer;
+    outline: none;
 }
 
-button:hover{
-    background-color: rgba(192, 57, 43, 1);
+input[type="submit"]:hover{
+    background-color: rgb(0,117,211);
     color: white;
-    border:rgba(192, 57, 43, 1) 2px solid;
+    box-shadow: none;
+    transform :translateY(2px);
 
+}
+
+
+input::placeholder, textarea::placeholder{    /* placeholder opacity */
+    color: rgb(0,0,0,0.3);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+section#hire form div span.valid {
+    opacity: 1;
 }
