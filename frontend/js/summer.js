@@ -3,20 +3,19 @@ function init() {
 
     inputs.forEach(function(input) {
         input.addEventListener('blur', function(e) {
-            // console.log(e);
             const target = e.target;
             if (target.value) {
                 target.classList.add('focused');
             } else {
                 target.classList.remove('focused');
             }
-        })
+        });
         input.addEventListener('input', () => {
             event.target.classList.remove('empty')
         })
     });
 
-    const form = document.querySelector('form')
+    const form = document.querySelector('form');
 
     form.addEventListener('submit', () => {
         event.preventDefault();
@@ -31,43 +30,56 @@ function init() {
                 document.querySelector(`#${key}`).classList.add('empty');
                 return key;
             }
-
-        })
+        });
 
         if (emptyElems.length) {
             return
         }
 
-        axios.post('http://localhost:3005/summer/addTour', data)
+        axios.post('/summer/addTour', data)
             .then(res => {
                 console.log(res)
             })
+
+        // inputName
+        // let link = null
+        // axios.post('/tours/findByName', inputName.value)
+        //     .then(res => {
+        //         link = res.link
+        //     })
+        // selector.value
+        // data.link = link
+
+        // axios.post('/schedule/addTour', data)
+        //     .then(res => {
+        //         console.log(res)
+        //     })
     });
 }
-init()
+init();
 
 
-let timer = null
+let timer = null;
 
 const lengthInput = document.querySelector('#tourLength');
 
 lengthInput.addEventListener('input', function() {
-    clearTimeout(timer)
+    clearTimeout(timer);
     const value = event.target.value;
     const maxDays = 20;
-    const backspaceEvent = event.inputType === 'deleteContentBackward'
+    const backspaceEvent = event.inputType === 'deleteContentBackward';
     const delay = backspaceEvent && 5000 || 300;
 
     timer = setTimeout(() => {
-        const form = document.querySelector('form')
-        const days = document.querySelectorAll('.day')
+        const form = document.querySelector('form');
+        const days = document.querySelectorAll('.day');
         days.forEach((day, i) => {
-            const v = day.querySelector('textarea').value
-            if (v && i < value) {
+            const innerV = day.querySelector('textarea').value;
+            if (innerV && i < value) {
                 return
             }
             form.removeChild(day)
-        })
+        });
 
         function generateDiv(i) {
             const div = document.createElement('div');
@@ -89,9 +101,9 @@ lengthInput.addEventListener('input', function() {
             return div;
         }
 
-        for (var i = 1; i <= value; i++) {
+        for (let i = 1; i <= value; i++) {
             if (i > maxDays) {
-                return;
+                break;
             }
             form.insertBefore(generateDiv(i), document.querySelector('input[type="submit"]'));
         }
