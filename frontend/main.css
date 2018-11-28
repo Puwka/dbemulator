@@ -54,24 +54,10 @@ form .field label {
   white-space: nowrap;
   color: rgb(255,255,255,0.8);
 }
-/* form .field label + span {
-  font-family: 'Lato' sans-serif;
-  opacity: 0;
-  color: #fff;
-  display: block;
-  position: absolute;
-  top: 12px;
-  left: 7%;
-  font-size: 2.5em;
-  text-shadow: 1px 2px 0 #cd6302;
-  -webkit-transition: all 333ms ease-in-out;
-  -moz-transition: all 333ms ease-in-out;
-  -o-transition: all 333ms ease-in-out;
-  -ms-transition: all 333ms ease-in-out;
-  transition: all 333ms ease-in-out;
-} */
+
 form .field input[type="text"],
 form .field input[type="number"],
+form .field input[type=date],
 form .field textarea{
   border: none;
   background: #FFF;
@@ -99,6 +85,8 @@ form .field input[type="text"]:focus,
 form .field input[type="number"]:focus,
 form .field input[type="number"].focused,
 form .field input[type="text"].focused,
+form .field input[type=date]:focus,
+form .field input[type=date].focused,
 form .field textarea:focus,
 form .field textarea.focused,
 form .field select:focus,
@@ -113,13 +101,17 @@ form .field textarea:focus.msg,
 form .field textarea.focused.msg {
   padding-bottom: 150px;
 }
-form .field input[type="text"]:focus + label, form .field input[type="text"].focused + label,
-form .field input[type="number"]:focus + label, form .field input[type="number"].focused + label,
+form .field input[type="text"]:focus + label,
+form .field input[type="text"].focused + label,
+form .field input[type="number"]:focus + label,
+form .field input[type="number"].focused + label,
 form .field textarea:focus + label,
 form .field textarea.focused + label,
 form .field select:focus + label,
 form .field select.focused + label,
-form .field textarea.focused + label{
+form .field textarea.focused + label,
+form .field input[type=date]:focus + label,
+form .field input[type=date].focused + label{
   width: 18%;
   background: #ff892b;                    /*  CVET SVERNUVSHIYSYA */
   color: #fff;
@@ -134,7 +126,7 @@ form .field:hover label {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-input[type="submit"]{
+input[type="submit"]{               /* button  */
     margin-top: 10px;
     color: white;
     border: none;
@@ -165,7 +157,7 @@ input::placeholder, textarea::placeholder{    /* placeholder opacity */
     color: rgba(0,0,0,0.3);
 }
 
-input::-webkit-outer-spin-button,
+input::-webkit-outer-spin-button,              /* remove input[type="number"] arrows */
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
@@ -177,13 +169,15 @@ section#hire form div span.valid {
 
 form .field input[type="text"].empty+ label,
 form .field input[type="number"].empty + label,
+form .field input[type="date"].empty + label,
 form .field textarea.empty + label,
 form .field select.empty + label{
   width: 18%;
-  background: salmon;
-
+  background: #cc0000;
 }
-.type-box{
+.type-box,
+.end-box,
+.start-box{
     display: flex;
     justify-content: flex-end;
     flex-wrap: wrap;
@@ -194,16 +188,18 @@ form .field select{
     outline: none;
     border: none;
 }
-form .field option{
+form .field input[type=date]{
+    text-align: center;
+}
+form .field select option{
     height: 53px;
+    text-align: center;
 }
 
-/* select {
-/-webkit-appearance: none;
--moz-appearance: none;
-text-indent: 1px;
-text-overflow: '';
-}  */
+input[type=date]::-webkit-calendar-picker-indicator {            /* delete date arrows*/
+    -webkit-appearance: none;
+    display: none;
+}
 
 
 form .field input[type="text"].empty,
@@ -213,7 +209,9 @@ form .field select.empty,
 form .field input[type="text"].empty+ label,
 form .field input[type="number"].empty + label,
 form .field select.empty + label,
-form .field textarea.empty + label {
+form .field textarea.empty + label,
+form .field input[type=date].empty,
+form .field input[type=date].empty + label{
     /* animation: shake .3s .5s; */
     animation-iteration-count: 2;
 }

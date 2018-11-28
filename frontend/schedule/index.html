@@ -30,13 +30,14 @@
                 <label for="price">Цена</label>
             </div>
 
-            <!-- <div class="field link-box">
+            <div class="field link-box">
                 <input class="selectMe" type="text" id="link" placeholder="/summer/uksa" autocomplete="off" />
                 <label for="link">Ссылка</label>
-            </div> -->
+            </div>
 
             <div class="field type-box">
-                <select id="type">
+                <select class="selectMe" id="type">
+                    <option disabled selected value>Выбери отдых</option>
                     <option value="fish">Рыбалка</option>
                     <option value="jeep">Джип</option>
                     <option value="snowride">Лыжи</option>
@@ -61,11 +62,19 @@
                 <label for="facilities">Удобства, оборудование и т.д.</label>
             </div>
 
-
-
             <div class="field fullReview-box">
                 <textarea class="selectMe msg" id="fullReview" autocomplete="off" rows="4" placeholder="Приглашаем вас в зимнюю Карелию! Три дня наедине..."></textarea>
                 <label for="fullReview">Полное описание</label>
+            </div>
+
+            <div class="field start-box">
+                <input class="selectMe" type="date" id="start" required="required" autocomplete="off" />
+                <label for="start">Дата начала</label>
+            </div>
+
+            <div class="field end-box">
+                <input class="selectMe" type="date" id="end" required="required" autocomplete="off" />
+                <label for="end">Дата конца</label>
             </div>
 
             <div class="field tourLength-box">
