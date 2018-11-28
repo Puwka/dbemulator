@@ -3,6 +3,7 @@ const selectTag = document.querySelector('select');
 const dateInputs = document.querySelectorAll('input[type="date"]');
 const form = document.querySelector('form');
 
+
 function shakeError(elem) {
     elem.classList.add('empty');
     elem.style.animation = 'shake .3s .5s';
@@ -12,6 +13,29 @@ function shakeError(elem) {
         elem.parentNode.querySelector('label').style.animation = '';
     }, 850);
 }
+
+function showAlert(answer) { // catcher
+    const errorElem = document.querySelector('.alert');
+
+    if (answer) {
+        errorElem.innerHTML = 'Успех!';
+        errorElem.style.backgroundColor = "#5CB811";
+        errorElem.style.border = "2px solid rgba(92,184,17,.9)";
+    } else {
+        errorElem.innerHTML = 'Имя тура не найдено :(';
+        errorElem.style.backgroundColor = "#FE1A00";
+        errorElem.style.border = "2px solid rgba(254,26,0,.9)";
+
+        document.querySelector('#name').classList.add('empty');
+    }
+    errorElem.style.display = "block";
+    errorElem.style.top = document.documentElement.clientHeight - errorElem.clientHeight - 10 + 'px';
+    errorElem.style.left = document.documentElement.clientWidth - errorElem.offsetWidth - 10 + 'px';
+
+    setTimeout(() => {
+        errorElem.style.display = "none";
+    }, 8000)
+};
 
 selectTag.addEventListener('click', function(event) { //special event for <select>
     event.target.classList.add('focused');
@@ -43,7 +67,6 @@ form.addEventListener('submit', () => {
     const emptyElems = Object.keys(data).filter(key => {
         if (!data[key]) {
             const elem = document.querySelector(`#${key}`);
-
             elem.classList.add('empty');
             shakeError(elem);
 
@@ -65,11 +88,15 @@ form.addEventListener('submit', () => {
 
     axios.post('/schedule/addTour', data)
         .then(res => {
+            showAlert(true);
             console.log(res);
         })
         .catch(err => {
-            console.log(1)
-            console.log(err.response)
+            showAlert(false);
+
+            console.log(1);
+            console.log(err.response);
+
         });
 
 });
