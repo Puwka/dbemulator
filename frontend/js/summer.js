@@ -41,14 +41,9 @@ function init() {
         });
 
         if (emptyElems.length) {
-
-            const elemsCoords = [].map.call(document.querySelectorAll('.empty'), item => {
-                return item = window.pageYOffset + item.parentNode.getBoundingClientRect().top;
-            });
-            console.log(elemsCoords);
-            window.scrollTo(null, Math.min.apply(null, elemsCoords));
-
-            console.log(Math.min.apply(null, elemsCoords));
+            const emptyNode = document.querySelector('.empty');
+            const coords = window.pageYOffset + emptyNode.parentNode.getBoundingClientRect().top - 15;
+            window.scrollTo(null, coords);
             return;
         }
 

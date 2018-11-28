@@ -31,34 +31,9 @@ inputs.forEach(function(input) {
     })
 });
 
-document.querySelector('input[type="submit"]').addEventListener('click', function() { //Удаляем системную ошибку при сабмите
-    dateInputs.forEach(function(input) {
-        input.removeAttribute("required");
-    });
-})
-
-document.querySelector('.title-box input').addEventListener('blur', function() { //Отправка запроса на получение линка
-    let link = null;
-
-
-    axios.post('/tours/findByName', document.querySelector('.title-box input').value)
-        .then(res => {
-            link = res.link;
-            document.querySelector('.title-box input').classList.remove('empty');
-
-            data.link = link;
-        })
-        .catch(e => { //error handling
-            shakeError(document.querySelector('.title-box input'));
-        });
-});
 
 form.addEventListener('submit', () => {
     event.preventDefault();
-
-    dateInputs.forEach(function(input) { // снова добавляем атрибут, чтобы не было крестика справа
-        input.setAttribute("required", "required");
-    });
 
     const data = [].reduce.call(inputs, (acc, input) => {
         acc[input.id] = input.value;
@@ -82,17 +57,19 @@ form.addEventListener('submit', () => {
 
 
     if (emptyElems.length) {
-        const elemsCoords = [].map.call(document.querySelectorAll('.empty'), item => {
-            return item = window.pageYOffset + item.parentNode.getBoundingClientRect().top;
-        });
-        window.scrollTo(null, Math.min.apply(null, elemsCoords));
-
+        const emptyNode = document.querySelector('.empty');
+        const coords = window.pageYOffset + emptyNode.parentNode.getBoundingClientRect().top - 15;
+        window.scrollTo(null, coords);
         return;
     }
 
     axios.post('/schedule/addTour', data)
         .then(res => {
             console.log(res);
+        })
+        .catch(err => {
+            console.log(1)
+            console.log(err.response)
         });
 
 });

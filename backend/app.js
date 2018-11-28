@@ -6,18 +6,20 @@ const cors = require('koa-cors');
 const serve = require('koa-static');
 
 const summerRoutes = require('./routes/summer');
+const scheduleRoutes = require('./routes/schedule');
 
 const app = new Koa();
-// console.log(path.join(__dirname, 'frontend'))
+
 app.use(bodyParser())
     .use(async (ctx, next) => {
-        console.log(ctx.url, ctx.method)
+        console.log(ctx.url, ctx.method);
         await next()
     })
     .use(serve(path.join(__dirname, '..', '/frontend')))
     .use(cors({
         origin: '*'
     }))
-    .use(summerRoutes.routes());
+    .use(summerRoutes.routes())
+    .use(scheduleRoutes.routes());
 
 app.listen('3005', () => console.log('backend listening on port 3005'));

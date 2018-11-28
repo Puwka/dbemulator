@@ -16,18 +16,8 @@
 
         <form>
             <div class="field title-box">
-                <input class="selectMe" type="text" id="title" placeholder="Укса" autocomplete="off" />
-                <label for="title">Название</label>
-            </div>
-
-            <div class="field date-box">
-                <input class="selectMe" type="text" id="date" autocomplete="off" placeholder="17 июля - 28 июля" />
-                <label for="date">Дата</label>
-            </div>
-
-            <div class="field price-box">
-                <input class="selectMe" type="number" id="price" autocomplete="off" placeholder="9000" autocomplete="off" />
-                <label for="price">Цена</label>
+                <input class="selectMe" type="text" id="name" placeholder="Укса" autocomplete="off" />
+                <label for="name">Название</label>
             </div>
 
             <div class="field type-box">
@@ -42,41 +32,15 @@
                 <label for="type">Тип отдыха</label>
             </div>
 
-            <div class="field lengthExtended-box">
-                <textarea class="selectMe msg" id="lengthExtended" autocomplete="off" rows="4" placeholder="Продолжительность: 3 дня / 2 ночи"></textarea>
-                <label for="lengthExtended">Длительность тура</label>
-            </div>
-
-            <div class="field active-box">
-                <textarea class="selectMe msg" id="active" rows="4" autocomplete="off" placeholder="Сроки проведения тура: по согласованию..."></textarea>
-                <label for="active">Активная часть</label>
-            </div>
-
-            <div class="field facilities-box">
-                <textarea class="selectMe msg" id="facilities" rows="4" autocomplete="off" placeholder="Размещение в гостевом доме (2-х местное)..."></textarea>
-                <label for="facilities">Удобства, оборудование и т.д.</label>
-            </div>
-
-            <div class="field fullReview-box">
-                <textarea class="selectMe msg" id="fullReview" autocomplete="off" rows="4" placeholder="Приглашаем вас в зимнюю Карелию! Три дня наедине..."></textarea>
-                <label for="fullReview">Полное описание</label>
-            </div>
-
             <div class="field start-box">
-                <input class="selectMe" type="date" id="start" required="required" autocomplete="off" />
+                <input class="selectMe" type="date" id="start" autocomplete="off" />
                 <label for="start">Дата начала</label>
             </div>
 
             <div class="field end-box">
-                <input class="selectMe" type="date" id="end" required="required" autocomplete="off" />
+                <input class="selectMe" type="date" id="end" autocomplete="off" />
                 <label for="end">Дата конца</label>
             </div>
-
-            <div class="field tourLength-box">
-                <input class="selectMe" type="number" id="tourLength" autocomplete="off" placeholder="3" autocomplete="off" />
-                <label for="tourLength">Длина тура в днях</label>
-            </div>
-
 
             <input class="button" type="submit" value="Send" />
         </form>

@@ -192,17 +192,12 @@ form .field select{
     outline: none;
     border: none;
 }
-form .field input[type=date]{
+form .field input[type="date"]{
     text-align: center;
 }
 form .field select option{
     height: 53px;
     text-align: center;
-}
-
-input[type=date]::-webkit-calendar-picker-indicator {            /* delete date arrows*/
-    -webkit-appearance: none;
-    display: none;
 }
 
 
@@ -216,7 +211,6 @@ form .field select.empty + label,
 form .field textarea.empty + label,
 form .field input[type=date].empty,
 form .field input[type=date].empty + label{
-    /* animation: shake .3s .5s; */
     animation-iteration-count: 2;
 }
 
