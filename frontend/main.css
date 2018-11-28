@@ -54,8 +54,8 @@ form .field label {
   white-space: nowrap;
   color: rgb(255,255,255,0.8);
 }
-form .field label + span {
-  font-family: 'Lato' sans-serif;     /*    DOBAVIT         */
+/* form .field label + span {
+  font-family: 'Lato' sans-serif;
   opacity: 0;
   color: #fff;
   display: block;
@@ -69,10 +69,10 @@ form .field label + span {
   -o-transition: all 333ms ease-in-out;
   -ms-transition: all 333ms ease-in-out;
   transition: all 333ms ease-in-out;
-}
+} */
 form .field input[type="text"],
 form .field input[type="number"],
-form .field textarea  {
+form .field textarea{
   border: none;
   background: #FFF;
   width: 80.5%;
@@ -83,6 +83,7 @@ form .field textarea  {
   font-size: 1.4em;
   letter-spacing: 0.05em;
 }
+
 form .field input[type="text"].msg,
 form .field input[type="number"].msg,
 form .field textarea.msg {
@@ -97,14 +98,16 @@ form .field textarea.msg {
 form .field input[type="text"]:focus,
 form .field input[type="number"]:focus,
 form .field input[type="number"].focused,
- form .field input[type="text"].focused,
+form .field input[type="text"].focused,
 form .field textarea:focus,
-form .field textarea.focused {
+form .field textarea.focused,
+form .field select:focus,
+form .field select.focused{
   outline: none;
 }
 form .field input[type="text"]:focus.msg,
 form .field input[type="number"]:focus.msg,
- form .field input[type="text"].focused.msg,
+form .field input[type="text"].focused.msg,
 form .field input[type="number"].focused.msg,
 form .field textarea:focus.msg,
 form .field textarea.focused.msg {
@@ -113,16 +116,15 @@ form .field textarea.focused.msg {
 form .field input[type="text"]:focus + label, form .field input[type="text"].focused + label,
 form .field input[type="number"]:focus + label, form .field input[type="number"].focused + label,
 form .field textarea:focus + label,
-form .field textarea.focused + label {
+form .field textarea.focused + label,
+form .field select:focus + label,
+form .field select.focused + label,
+form .field textarea.focused + label{
   width: 18%;
   background: #ff892b;                    /*  CVET SVERNUVSHIYSYA */
   color: #fff;
 }
-form .field input[type="text"].focused + label,
-form .field input[type="number"].focused + label,
-form .field textarea.focused + label {
-  color: #fff;
-}
+
 form .field:hover label {
   width: 18%;
   background: rgb(0,117,211);
@@ -172,30 +174,47 @@ section#hire form div span.valid {
     opacity: 1;
 }
 
-/* VALIDATOR */
-/* body section form div.field  input.empty,
-body section form div.field  textarea.empty{
-    background-color: salmon;
-} */
-
 
 form .field input[type="text"].empty+ label,
 form .field input[type="number"].empty + label,
-form .field textarea.empty + label {
+form .field textarea.empty + label,
+form .field select.empty + label{
   width: 18%;
   background: salmon;
 
-  /* color: #000;
-  font-weight: bold; */
 }
+.type-box{
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+form .field select{
+    flex-basis: 82%;
+    height: 53px;
+    outline: none;
+    border: none;
+}
+form .field option{
+    height: 53px;
+}
+
+/* select {
+/-webkit-appearance: none;
+-moz-appearance: none;
+text-indent: 1px;
+text-overflow: '';
+}  */
+
 
 form .field input[type="text"].empty,
 form .field input[type="number"].empty,
 form .field textarea.empty,
+form .field select.empty,
 form .field input[type="text"].empty+ label,
 form .field input[type="number"].empty + label,
+form .field select.empty + label,
 form .field textarea.empty + label {
-    animation: shake .3s .5s;
+    /* animation: shake .3s .5s; */
     animation-iteration-count: 2;
 }
 
