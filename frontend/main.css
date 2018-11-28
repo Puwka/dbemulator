@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: rgb(0,150,246);                  /* CVET NASTOYENIYA*/
   font-size: 62.5%;

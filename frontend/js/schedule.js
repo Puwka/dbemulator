@@ -2,7 +2,6 @@ const inputs = document.querySelectorAll('.selectMe');
 const selectTag = document.querySelector('select');
 const dateInputs = document.querySelectorAll('input[type="date"]');
 const form = document.querySelector('form');
-const linkGetter = document.getElementById('link');
 
 function shakeError(elem) {
     elem.classList.add('empty');
@@ -38,19 +37,20 @@ document.querySelector('input[type="submit"]').addEventListener('click', functio
     });
 })
 
-linkGetter.addEventListener('blur', function() { //Отправка запроса на получение линка
+document.querySelector('.title-box input').addEventListener('blur', function() { //Отправка запроса на получение линка
     let link = null;
 
-    try {
-        axios.post('/tours/findByName', linkGetter.value)
-            .then(res => {
-                link = res.link;
-            })
-        linkGetter.classList.remove('empty');
-        data.id = link;
-    } catch (e) { //error handling
-        shakeError(linkGetter);
-    }
+
+    axios.post('/tours/findByName', document.querySelector('.title-box input').value)
+        .then(res => {
+            link = res.link;
+            document.querySelector('.title-box input').classList.remove('empty');
+
+            data.link = link;
+        })
+        .catch(e => { //error handling
+            shakeError(document.querySelector('.title-box input'));
+        });
 });
 
 form.addEventListener('submit', () => {
@@ -72,21 +72,27 @@ form.addEventListener('submit', () => {
             elem.classList.add('empty');
             shakeError(elem);
 
-            if (linkGetter.classList.contains('empty')) { //Чисто для ссылы
-                shakeError(linkGetter);
+            if (document.querySelector('.title-box input').classList.contains('empty')) { //Чисто для тряски тайтла
+                shakeError(document.querySelector('.title-box input'));
             };
 
             return key;
-        }
+        };
     });
 
+
     if (emptyElems.length) {
-        return
+        const elemsCoords = [].map.call(document.querySelectorAll('.empty'), item => {
+            return item = window.pageYOffset + item.parentNode.getBoundingClientRect().top;
+        });
+        window.scrollTo(null, Math.min.apply(null, elemsCoords));
+
+        return;
     }
 
     axios.post('/schedule/addTour', data)
         .then(res => {
-            console.log(res)
+            console.log(res);
         });
 
 });

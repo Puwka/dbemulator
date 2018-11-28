@@ -41,6 +41,10 @@ function init() {
         });
 
         if (emptyElems.length) {
+            const elemsCoords = [].map.call(document.querySelectorAll('.empty'), item => {
+                return item = window.pageYOffset + item.parentNode.getBoundingClientRect().top;
+            });
+            window.scrollTo(null, Math.min.apply(null, elemsCoords));
             return;
         }
 
