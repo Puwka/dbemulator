@@ -14,17 +14,27 @@ function shakeError(elem) {
     }, 850);
 }
 
+let animationIs = null;
+
 function showAlert(answer) { // alert
+    if (animationIs) return;
+
+    animationIs = true;
+
     if (answer) {
         document.querySelector('.success').style.animation = '10s .5s alertAppearance';
+
         setTimeout(() => {
-            document.querySelector('.success').style.animation = 'none'
+            document.querySelector('.success').style.animation = 'none';
+            animationIs = null;
         }, 12000);
     } else {
+        var animationIs = true;
         document.querySelector('#name').classList.add('empty');
         document.querySelector('.error').style.animation = '10s .5s alertAppearance';
         setTimeout(() => {
             document.querySelector('.error').style.animation = 'none';
+            animationIs = null;
         }, 12000);
     }
 
