@@ -14,27 +14,20 @@ function shakeError(elem) {
     }, 850);
 }
 
-function showAlert(answer) { // catcher
-    const errorElem = document.querySelector('.alert');
-
+function showAlert(answer) { // alert
     if (answer) {
-        errorElem.innerHTML = 'Успех!';
-        errorElem.style.backgroundColor = "#5CB811";
-        errorElem.style.border = "2px solid rgba(92,184,17,.9)";
+        document.querySelector('.success').style.animation = '10s .5s alertAppearance';
+        setTimeout(() => {
+            document.querySelector('.success').style.animation = 'none'
+        }, 12000);
     } else {
-        errorElem.innerHTML = 'Имя тура не найдено :(';
-        errorElem.style.backgroundColor = "#FE1A00";
-        errorElem.style.border = "2px solid rgba(254,26,0,.9)";
-
         document.querySelector('#name').classList.add('empty');
+        document.querySelector('.error').style.animation = '10s .5s alertAppearance';
+        setTimeout(() => {
+            document.querySelector('.error').style.animation = 'none';
+        }, 12000);
     }
-    errorElem.style.display = "block";
-    errorElem.style.top = document.documentElement.clientHeight - errorElem.clientHeight - 10 + 'px';
-    errorElem.style.left = document.documentElement.clientWidth - errorElem.offsetWidth - 10 + 'px';
 
-    setTimeout(() => {
-        errorElem.style.display = "none";
-    }, 8000)
 };
 
 selectTag.addEventListener('click', function(event) { //special event for <select>
@@ -89,14 +82,9 @@ form.addEventListener('submit', () => {
     axios.post('/schedule/addTour', data)
         .then(res => {
             showAlert(true);
-            console.log(res);
         })
         .catch(err => {
             showAlert(false);
-
-            console.log(1);
-            console.log(err.response);
-
         });
 
 });

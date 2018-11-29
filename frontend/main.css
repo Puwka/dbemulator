@@ -9,6 +9,7 @@ body {
   font-weight: 300;
   color: #B6B6B6;
   letter-spacing: 10px;
+  overflow-x: hidden;
 }
 body section {
   background: rgb(0,150,246);
@@ -31,6 +32,7 @@ body section h1 {
 form {
   width: 58.3333333333%;
   margin: 0 auto;
+  overflow: hidden;
 }
 form .field {
   width: 100%;
@@ -214,11 +216,11 @@ form .field input[type=date].empty + label{
     animation-iteration-count: 2;
 }
 
-form div.alert {        /*alert */
+.alert {
     position: absolute;
     z-index: 9999;
-
     padding: 10px 0px 10px 20px;
+
     border-radius: 2px;
     text-shadow: -1px -1px 0 rgba(0,0,0,.5);
     color: #FFF;
@@ -227,9 +229,35 @@ form div.alert {        /*alert */
     font-size: 16px;
     letter-spacing: 2px;
     text-align: left;
-    display:none;
     transition: all 2s;
+    top: 94%;
+    left: 110%;
+
 }
+.success{
+    background-color: #5CB811;
+    border: 2px solid rgba(92,184,17,.9);
+
+
+}
+.error{
+    background-color: #FE1A00;
+    border:2px solid rgba(254,26,0,.9);
+
+}
+
+@keyframes alertAppearance {
+    12% {
+        left: 80%;
+    } 50% {
+        left: 80%;
+    } 78% {
+        left: 110%;
+    } 100% {
+        left: 110%;
+    }
+}
+
 
 @keyframes shake {
     0% {
