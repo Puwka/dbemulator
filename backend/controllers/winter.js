@@ -16,13 +16,16 @@ const getToursFromFile = async () => {
 exports.postAddTour = () => async ctx => {
     const payload = ctx.request.body;
     const tours = await getToursFromFile();
-    const {link, id} = tours.find(t => t.link === payload.link);
-    ctx.assert(link !== payload.link, 400, {message: 'Ссылка занята', link});
-    ctx.assert(id !== payload.id, 400, {message: 'Такой тур уже есть', id});
+    const { title } = (tours.find(t => t.title === payload.title) || {});
+    const { id } = (tours.find(t => t.id === payload.id) || {});
+    ctx.assert(title !== payload.title, 400, 'тур');
+    ctx.assert(id !== payload.id, 400, 'ссылка');
     tours.push(payload);
     writeFileAsync(p, JSON.stringify(tours));
 
-    ctx.body = {ok: true}
+    ctx.body = {
+        ok: true
+    }
 };
 
 exports.getIndex = () => async ctx => {
