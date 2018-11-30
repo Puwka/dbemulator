@@ -1,58 +1,87 @@
+const blurListener = e => {
+    const target = e.target;
+    if (target.value) {
+        target.classList.add('focused');
+    } else {
+        target.classList.remove('focused');
+    }
+};
+
+const subListener = () => {
+    event.preventDefault();
+
+    const data = [].reduce.call(inputs, (acc, input) => {
+        acc[input.id] = input.value;
+        return acc;
+    }, {});
+
+    const emptyElems = Object.keys(data).filter(key => {
+        if (!data[key]) {
+            document.querySelector(`#${key}`).classList.add('empty');
+
+            document.querySelector(`#${key}`).style.animation = 'shake .3s .5s';
+            document.querySelector(`#${key}`).parentNode.querySelector('label').style.animation = 'shake .3s .5s';
+            setTimeout(function() {
+                document.querySelector(`#${key}`).style.animation = '';
+                document.querySelector(`#${key}`).parentNode.querySelector('label').style.animation = '';
+            }, 850);
+
+            return key;
+        }
+    });
+
+    if (emptyElems.length) {
+        const emptyNode = document.querySelector('.empty');
+        const coords = window.pageYOffset + emptyNode.parentNode.getBoundingClientRect().top - 15;
+        window.scrollTo(null, coords);
+        return;
+    }
+
+    axios.post('/winter/addTour', data)
+        .then(res => {
+            console.log(1);
+            //clear inputs
+        })
+        .catch(err => {
+            // console.log(err.response);
+            // console.log(err);
+
+            if (err.response.data === 'тур') {
+                const titleElem = document.querySelector('#title');
+                const titleCoords = window.pageYOffset + titleElem.parentNode.getBoundingClientRect().top - 15;
+
+                titleElem.classList.add('empty');
+                window.scrollTo(null, titleCoords);
+            } else if (err.response.data === 'ссылка') {
+                const idElem = document.querySelector('#id');
+                const idCoords = window.pageYOffset + idElem.parentNode.getBoundingClientRect().top - 15;
+
+                idElem.classList.add('empty');
+                window.scrollTo(null, idCoords);
+            }
+        });
+}
+
+const inputListener = () => {
+    console.log(2)
+    event.target.classList.remove('empty')
+}
+
 function init() {
     const inputs = document.querySelectorAll('.selectMe');
 
     inputs.forEach(function(input) {
-        input.addEventListener('blur', function(e) {
-            const target = e.target;
-            if (target.value) {
-                target.classList.add('focused');
-            } else {
-                target.classList.remove('focused');
-            }
-        });
-        input.addEventListener('input', () => {
-            event.target.classList.remove('empty');
-        })
-    });
+
+        input.addEventListener('input', inputListener)
+
+        input.addEventListener('blur', blurListener);
+    })
+
 
     const form = document.querySelector('form');
-
-    form.addEventListener('submit', () => {
-        event.preventDefault();
-
-        const data = [].reduce.call(inputs, (acc, input) => {
-            acc[input.id] = input.value;
-            return acc;
-        }, {});
-
-        const emptyElems = Object.keys(data).filter(key => {
-            if (!data[key]) {
-                document.querySelector(`#${key}`).classList.add('empty');
-
-                document.querySelector(`#${key}`).style.animation = 'shake .3s .5s';
-                document.querySelector(`#${key}`).parentNode.querySelector('label').style.animation = 'shake .3s .5s';
-                setTimeout(function() {
-                    document.querySelector(`#${key}`).style.animation = '';
-                    document.querySelector(`#${key}`).parentNode.querySelector('label').style.animation = '';
-                }, 850);
-
-                return key;
-            }
-        });
-
-        if (emptyElems.length) {
-            const emptyNode = document.querySelector('.empty');
-            const coords = window.pageYOffset + emptyNode.parentNode.getBoundingClientRect().top - 15;
-            window.scrollTo(null, coords);
-            return;
-        }
-
-        axios.post('/summer/addTour', data)
-            .then(res => {
-                console.log(res)
-            })
-    });
+    form.addEventListener('submit', subListener);
 }
+
 init();
 
 
