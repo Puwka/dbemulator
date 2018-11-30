@@ -9,7 +9,7 @@ const blurListener = e => {
 
 const subListener = () => {
     event.preventDefault();
-
+    const inputs = document.querySelectorAll('.selectMe');
     const data = [].reduce.call(inputs, (acc, input) => {
         acc[input.id] = input.value;
         return acc;
@@ -39,31 +39,20 @@ const subListener = () => {
 
     axios.post('/winter/addTour', data)
         .then(res => {
-            console.log(1);
-            //clear inputs
+            window.scrollTo(0, 0);
+            location.reload();
+
         })
         .catch(err => {
-            // console.log(err.response);
-            // console.log(err);
-
-            if (err.response.data === 'тур') {
-                const titleElem = document.querySelector('#title');
-                const titleCoords = window.pageYOffset + titleElem.parentNode.getBoundingClientRect().top - 15;
-
-                titleElem.classList.add('empty');
-                window.scrollTo(null, titleCoords);
-            } else if (err.response.data === 'ссылка') {
-                const idElem = document.querySelector('#id');
-                const idCoords = window.pageYOffset + idElem.parentNode.getBoundingClientRect().top - 15;
-
-                idElem.classList.add('empty');
-                window.scrollTo(null, idCoords);
-            }
+            const selector = err.response.data === 'тур' ? '#title' : '#id';
+            const elem = document.querySelector(selector);
+            const coords = window.pageYOffset + elem.parentNode.getBoundingClientRect().top - 15;
+            elem.classList.add('empty');
+            window.scrollTo(null, coords);
         });
 }
 
 const inputListener = () => {
-    console.log(2)
     event.target.classList.remove('empty')
 }
 
