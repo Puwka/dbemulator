@@ -7,6 +7,7 @@ const serve = require('koa-static');
 
 const summerRoutes = require('./routes/summer');
 const scheduleRoutes = require('./routes/schedule');
+const winterRoutes = require('./routes/winter');
 
 const app = new Koa();
 
@@ -20,6 +21,7 @@ app.use(bodyParser())
         origin: '*'
     }))
     .use(summerRoutes.routes())
+    .use(winterRoutes.routes())
     .use(scheduleRoutes.routes());
 
 app.listen('3005', () => console.log('backend listening on port 3005'));
